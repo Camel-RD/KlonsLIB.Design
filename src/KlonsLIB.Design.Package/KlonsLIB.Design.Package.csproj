@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>$(NugetTFm)</TargetFrameworks>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>		
+		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+		<RunPostBuildEvent>Always</RunPostBuildEvent>
+		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_GetFilesToPackage</TargetsForTfmSpecificContentInPackage>
+		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_GetFilesToPackage2</TargetsForTfmSpecificContentInPackage>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Description>This package contains generic collection type editor for .NET.</Description>
+		<PackageReadmeFile>NuGetReadme.md</PackageReadmeFile>
+		<authors>camel.rd</authors>
+		<PackageTags>WinForms, Windows, Forms</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<PackageId>KlonsLIB.Design.Debug</PackageId>
+		<PackageVersion>$([System.DateTime]::UtcNow.ToString("$(MajorVer).yM.dHHmm"))</PackageVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<PackageId>KlonsLIB.Design</PackageId>
+		<PackageVersion>$(MajorVer).$(MinorPatchVer)$(PRVer)</PackageVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="$(SolutionDir)NuGetReadme.md" Pack="true" Visible="false" PackagePath="" />
+	</ItemGroup>
+
+	<Target Name="PreBuildClean" BeforeTargets="BeforeBuild">
+		<Message Text="### Start clean before build..." Importance="high" />
+		<CallTarget Targets="Clean" />
+		<Message Text="### Finished clean before build." Importance="high" />
+	</Target>
+
+
+
+	<Target Name="_GetFilesToPackage" Condition="'$(TargetFramework)' != 'net472'">
+		<ItemGroup>
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design\bin\$(Configuration)\$(TargetFramework.Substring(0, $(TargetFramework.LastIndexOf($(TFmWinVer)))))\KlonsLIB.Design.dll" />
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design\bin\$(Configuration)\$(TargetFramework.Substring(0, $(TargetFramework.LastIndexOf($(TFmWinVer)))))\KlonsLIB.Design.pdb" />
+
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.Server\bin\$(Configuration)\$(TargetFramework.Substring(0, $(TargetFramework.LastIndexOf($(TFmWinVer)))))\KlonsLIB.Design.Server.dll" TargetDir="Design/WinForms/Server" />
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.Server\bin\$(Configuration)\$(TargetFramework.Substring(0, $(TargetFramework.LastIndexOf($(TFmWinVer)))))\KlonsLIB.Design.Server.pdb" TargetDir="Design/WinForms/Server" />
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.Client\bin\$(Configuration)\$(TargetFrameworkClient)\KlonsLIB.Design.Client.dll" TargetDir="Design/WinForms" />
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.Client\bin\$(Configuration)\$(TargetFrameworkClient)\KlonsLIB.Design.Client.pdb" TargetDir="Design/WinForms" />
+		</ItemGroup>
+
+		<ItemGroup>
+			<TfmSpecificPackageFile Include="@(_File)" PackagePath="$(BuildOutputTargetFolder)/$(TargetFramework)/%(_File.TargetDir)" />			
+		</ItemGroup>
+	</Target>
+
+	<Target Name="_GetFilesToPackage2" Condition="'$(TargetFramework)' == 'net472'">
+		<ItemGroup>
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.472\bin\$(Configuration)\$(TargetFramework)\KlonsLIB.Design.dll" />
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.472\bin\$(Configuration)\$(TargetFramework)\KlonsLIB.Design.pdb" />
+		</ItemGroup>
+
+		<ItemGroup>
+			<TfmSpecificPackageFile Include="@(_File)" PackagePath="$(BuildOutputTargetFolder)/$(TargetFramework)/%(_File.TargetDir)" />			
+		</ItemGroup>
+	</Target>
+
+
+
+	
+	<Target Name="CopyPackageR" AfterTargets="Pack" Condition="'$(Configuration)'=='Release'">
+		<Message Text="### Start copy package..." Importance="high" />
+		<Copy SourceFiles="$(OutputPath)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(SolutionDir)NuGet\BuildOut\" />
+		<Message Text="### Finished copy package." Importance="high" />
+	</Target>
+	
+	<Target Name="CopyPackageD" AfterTargets="Pack" Condition="'$(Configuration)'=='Debug'">
+		<Message Text="### Start copy package..." Importance="high" />
+		<Copy SourceFiles="$(OutputPath)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(SolutionDir)NuGet\BuildOut\" />
+		<Message Text="### Finished copy package. Start restore..." Importance="high" />
+		<Message Text="### Finished restore." Importance="high" />
+	</Target>
+</Project>

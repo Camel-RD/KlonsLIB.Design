@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>net472;net7.0-windows</TargetFrameworks>
+	  <!-- switching to this would require VS restart
+    <TargetFrameworks>net7.0-windows</TargetFrameworks>
+	-->
+	<Nullable>disable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <StartupObject>TestForm.Program</StartupObject>
+	<ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
+	<ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KlonsLIB.Design.Debug" Version="1.242.71717" />
+  </ItemGroup>
+
+</Project>

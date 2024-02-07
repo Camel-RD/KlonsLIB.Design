@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+		<TargetFrameworks>$(TargetFrameworkServer);$(TargetFrameworkClient)</TargetFrameworks>
+		<UseWindowsForms>true</UseWindowsForms>
+		<LangVersion>latest</LangVersion>
+		<AssemblyName>KlonsLIB.Design.ClientServerProtocol</AssemblyName>
+		<Nullable>enable</Nullable>
+		<UseDesignerSdk>true</UseDesignerSdk>
+		<AssemblyVersion>$(MajorVer).0.0.0</AssemblyVersion>
+		<FileVersion>$(MajorVer).$(MinorPatchVer).0</FileVersion>
+		<InformationalVersion>$(MajorVer).$(MinorPatchVer)$(PRVer)</InformationalVersion>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="KlonsLIB.Design.Client" />
+		<InternalsVisibleTo Include="KlonsLIB.Design.Server" />
+	</ItemGroup>
+
+
+</Project>

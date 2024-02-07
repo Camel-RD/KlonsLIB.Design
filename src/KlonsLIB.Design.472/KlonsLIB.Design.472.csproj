@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+		<TargetFramework>$(TargetFrameworkClient)</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<LangVersion>latest</LangVersion>
+		<AssemblyName>KlonsLIB.Design</AssemblyName>
+		<Nullable>enable</Nullable>
+		<AssemblyVersion>$(MajorVer).0.0.0</AssemblyVersion>
+		<FileVersion>$(MajorVer).$(MinorPatchVer).0</FileVersion>
+		<InformationalVersion>$(MajorVer).$(MinorPatchVer)$(PRVer)</InformationalVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Design" />
+  </ItemGroup>
+
+</Project>

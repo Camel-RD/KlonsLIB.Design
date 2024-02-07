@@ -1,0 +1,2 @@
+# Generic Collection Type Editor
+

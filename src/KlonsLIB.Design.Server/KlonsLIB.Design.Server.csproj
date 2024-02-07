@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFrameworks>$(TargetFrameworksServer)</TargetFrameworks>
+	<AssemblyName>KlonsLIB.Design.Server</AssemblyName>
+	<UseWindowsForms>true</UseWindowsForms>
+	<Nullable>enable</Nullable>
+	<UseDesignerSdk>true</UseDesignerSdk>
+	<AssemblyVersion>$(MajorVer).0.0.0</AssemblyVersion>
+	<FileVersion>$(MajorVer).$(MinorPatchVer).0</FileVersion>
+	<InformationalVersion>$(MajorVer).$(MinorPatchVer)$(PRVer)</InformationalVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KlonsLIB.Design\KlonsLIB.Design.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.WinForms.Designer.SDK" Version="1.6.0" />
+  </ItemGroup>
+
+</Project>
