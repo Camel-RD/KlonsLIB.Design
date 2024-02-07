@@ -11,4 +11,4 @@ For Visual Studio 2022 to pick up this collection editor, package KlonsLib.Desig
 
 Package is also backwards compatible with .Netfranework projects (net472).
 
-The KlonsLib.Design solution contains project TestForm which demonstrates how to implement editable collection and setup the project for build with multiple target frameworks (net472; net7-windows).
+The KlonsLib.Design solution contains a project TestForm which demonstrates how to implement editable collection and setup the project for building with multiple target frameworks (net472; net7-windows).
