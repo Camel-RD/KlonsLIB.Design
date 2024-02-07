@@ -1,9 +1,9 @@
 # KlonsLib.Design.GenericCollectionEditor
 
 Custom type editors written for .Netframework (4.x) won't work with the new .Net WinForms designer.
-This project attempts to provide a generic collection editor wich can be used with any collection that can contain items with different types.
+This project attempts to provide a generic collection editor which can be used with any collection that can contain items with different types.
 
-GenericCollectionEditor is not needed for collections which contain items of one type only.
+GenericCollectionEditor is not needed for collections containing items of one type.
 
 Types for the new items to GenericCollectionEditor are provided implementing IGenericCollectionEditorTarget within collections class.
 
