@@ -16,7 +16,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KlonsLIB.Design.Client", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KlonsLIB.Design.Package", "src\KlonsLIB.Design.Package\KlonsLIB.Design.Package.csproj", "{96736980-8FD4-4C5F-92E3-0A5DF6E5238C}"
 	ProjectSection(ProjectDependencies) = postProject
-		{14FD65A9-5995-40A8-ABB4-D83160D3AA2B} = {14FD65A9-5995-40A8-ABB4-D83160D3AA2B}
 		{6C58DF48-4DA1-44A9-B6E5-2E8F44201DA5} = {6C58DF48-4DA1-44A9-B6E5-2E8F44201DA5}
 		{B4A1E455-754C-4617-B1AB-AD3A3D0CD319} = {B4A1E455-754C-4617-B1AB-AD3A3D0CD319}
 		{BC350441-66C1-48E9-ABEC-C4F2FC6FCD62} = {BC350441-66C1-48E9-ABEC-C4F2FC6FCD62}
@@ -24,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KlonsLIB.Design.Package", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KlonsLIB.Design", "src\KlonsLIB.Design\KlonsLIB.Design.csproj", "{B4A1E455-754C-4617-B1AB-AD3A3D0CD319}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KlonsLIB.Design.472", "src\KlonsLIB.Design.472\KlonsLIB.Design.472.csproj", "{14FD65A9-5995-40A8-ABB4-D83160D3AA2B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestForm", "TestForm\TestForm.csproj", "{3AB6B98D-D9C0-41B7-B075-38C6D9EC4EA7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KlonsLIB.Design.ClientServerProtocol", "src\KlonsLIB.Design.ClientServerProtocol\KlonsLIB.Design.ClientServerProtocol.csproj", "{903EBBCD-AB97-4A73-AB88-ED84CFC6A2F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,14 +49,14 @@ Global
 		{B4A1E455-754C-4617-B1AB-AD3A3D0CD319}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4A1E455-754C-4617-B1AB-AD3A3D0CD319}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4A1E455-754C-4617-B1AB-AD3A3D0CD319}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14FD65A9-5995-40A8-ABB4-D83160D3AA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14FD65A9-5995-40A8-ABB4-D83160D3AA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14FD65A9-5995-40A8-ABB4-D83160D3AA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14FD65A9-5995-40A8-ABB4-D83160D3AA2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3AB6B98D-D9C0-41B7-B075-38C6D9EC4EA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AB6B98D-D9C0-41B7-B075-38C6D9EC4EA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AB6B98D-D9C0-41B7-B075-38C6D9EC4EA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AB6B98D-D9C0-41B7-B075-38C6D9EC4EA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{903EBBCD-AB97-4A73-AB88-ED84CFC6A2F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{903EBBCD-AB97-4A73-AB88-ED84CFC6A2F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{903EBBCD-AB97-4A73-AB88-ED84CFC6A2F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{903EBBCD-AB97-4A73-AB88-ED84CFC6A2F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

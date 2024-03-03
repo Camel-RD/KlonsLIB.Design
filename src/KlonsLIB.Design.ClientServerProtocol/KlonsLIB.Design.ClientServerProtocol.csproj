@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-		<TargetFrameworks>$(TargetFrameworkServer);$(TargetFrameworkClient)</TargetFrameworks>
+		<TargetFrameworks>$(TargetFrameworksServer);$(TargetFrameworkClient)</TargetFrameworks>
 		<UseWindowsForms>true</UseWindowsForms>
 		<LangVersion>latest</LangVersion>
 		<AssemblyName>KlonsLIB.Design.ClientServerProtocol</AssemblyName>

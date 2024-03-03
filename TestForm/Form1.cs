@@ -14,11 +14,13 @@ namespace TestForm
         public Form1()
         {
             InitializeComponent();
+            propertyGrid1.SelectedObject = userControl11;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
+
     }
 }

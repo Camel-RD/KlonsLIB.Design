@@ -7,7 +7,6 @@
 		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_GetFilesToPackage</TargetsForTfmSpecificContentInPackage>
-		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_GetFilesToPackage2</TargetsForTfmSpecificContentInPackage>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -40,34 +39,33 @@
 
 
 
-	<Target Name="_GetFilesToPackage" Condition="'$(TargetFramework)' != 'net472'">
-		<ItemGroup>
+	<Target Name="_GetFilesToPackage">
+		<ItemGroup Condition="'$(TargetFramework)' != '$(TargetFrameworkClient)'">
 			<_File Include="$(SolutionDir)\src\KlonsLIB.Design\bin\$(Configuration)\$(TargetFramework.Substring(0, $(TargetFramework.LastIndexOf($(TFmWinVer)))))\KlonsLIB.Design.dll" />
 			<_File Include="$(SolutionDir)\src\KlonsLIB.Design\bin\$(Configuration)\$(TargetFramework.Substring(0, $(TargetFramework.LastIndexOf($(TFmWinVer)))))\KlonsLIB.Design.pdb" />
 
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.ClientServerProtocol\bin\$(Configuration)\$(TargetFramework.Substring(0, $(TargetFramework.LastIndexOf($(TFmWinVer)))))\KlonsLIB.Design.ClientServerProtocol.dll" TargetDir="Design/WinForms/Server" />
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.ClientServerProtocol\bin\$(Configuration)\$(TargetFramework.Substring(0, $(TargetFramework.LastIndexOf($(TFmWinVer)))))\KlonsLIB.Design.ClientServerProtocol.pdb" TargetDir="Design/WinForms/Server" />
+
 			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.Server\bin\$(Configuration)\$(TargetFramework.Substring(0, $(TargetFramework.LastIndexOf($(TFmWinVer)))))\KlonsLIB.Design.Server.dll" TargetDir="Design/WinForms/Server" />
 			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.Server\bin\$(Configuration)\$(TargetFramework.Substring(0, $(TargetFramework.LastIndexOf($(TFmWinVer)))))\KlonsLIB.Design.Server.pdb" TargetDir="Design/WinForms/Server" />
+
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.ClientServerProtocol\bin\$(Configuration)\$(TargetFrameworkClient)\KlonsLIB.Design.ClientServerProtocol.dll" TargetDir="Design/WinForms" />
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.ClientServerProtocol\bin\$(Configuration)\$(TargetFrameworkClient)\KlonsLIB.Design.ClientServerProtocol.pdb" TargetDir="Design/WinForms" />
+
 			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.Client\bin\$(Configuration)\$(TargetFrameworkClient)\KlonsLIB.Design.Client.dll" TargetDir="Design/WinForms" />
 			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.Client\bin\$(Configuration)\$(TargetFrameworkClient)\KlonsLIB.Design.Client.pdb" TargetDir="Design/WinForms" />
 		</ItemGroup>
-
-		<ItemGroup>
-			<TfmSpecificPackageFile Include="@(_File)" PackagePath="$(BuildOutputTargetFolder)/$(TargetFramework)/%(_File.TargetDir)" />			
-		</ItemGroup>
-	</Target>
-
-	<Target Name="_GetFilesToPackage2" Condition="'$(TargetFramework)' == 'net472'">
-		<ItemGroup>
-			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.472\bin\$(Configuration)\$(TargetFramework)\KlonsLIB.Design.dll" />
-			<_File Include="$(SolutionDir)\src\KlonsLIB.Design.472\bin\$(Configuration)\$(TargetFramework)\KlonsLIB.Design.pdb" />
+		
+		<ItemGroup Condition="'$(TargetFramework)' == '$(TargetFrameworkClient)'">
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design\bin\$(Configuration)\$(TargetFramework)\KlonsLIB.Design.dll" />
+			<_File Include="$(SolutionDir)\src\KlonsLIB.Design\bin\$(Configuration)\$(TargetFramework)\KlonsLIB.Design.pdb" />
 		</ItemGroup>
 
 		<ItemGroup>
 			<TfmSpecificPackageFile Include="@(_File)" PackagePath="$(BuildOutputTargetFolder)/$(TargetFramework)/%(_File.TargetDir)" />			
 		</ItemGroup>
 	</Target>
-
-
 
 	
 	<Target Name="CopyPackageR" AfterTargets="Pack" Condition="'$(Configuration)'=='Release'">

@@ -12,11 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KlonsLIB.Design.ClientServerProtocol\KlonsLIB.Design.ClientServerProtocol.csproj" />
     <ProjectReference Include="..\KlonsLIB.Design\KlonsLIB.Design.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Update="Microsoft.WinForms.Designer.SDK" Version="1.6.0" />
   </ItemGroup>
+
 
 </Project>

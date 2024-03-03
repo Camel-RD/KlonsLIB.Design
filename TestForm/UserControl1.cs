@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace TestForm
 {
-    public partial class UserControl1 : UserControl
+    public partial class UserControl1 : UserControl, IGenericStringDropDownEditorTarget
     {
         public UserControl1()
         {
@@ -23,25 +23,37 @@ namespace TestForm
 
         private void UserControl1_Load(object sender, EventArgs e)
         {
+        }
 
+        string[] IGenericStringDropDownEditorTarget.GetValues(string propertyname)
+        {
+            if(propertyname == "MyStringProp")
+            {
+                return new[] { "P1-1", "P1-2" };
+            }
+            if (propertyname == "MyStringProp2")
+            {
+                return new[] { "P2-1", "P2-2" };
+            }
+            return new string[0] ;
         }
 
         [Category("_MyData")]
-#if NETFRAMEWORK
-        [Editor("KlonsLIB.Design.GenericCollectionEditor, KlonsLIB.Design", typeof(UITypeEditor))]
-#else
-        [Editor("GenericCollectionEditor", (typeof(UITypeEditor)))]
-#endif
+        [Editor("KlonsLIB.Design.GenericCollectionEditor, KlonsLIB.Design", "System.Drawing.Design.UITypeEditor, System.Windows.Forms")]
         public MyDataItemList Data { get; } = new MyDataItemList();
 
 
         [Category("_MyData")]
-#if NETFRAMEWORK
-        [Editor("KlonsLIB.Design.GenericCollectionEditor, KlonsLIB.Design", typeof(UITypeEditor))]
-#else
-        [Editor("GenericCollectionEditor", (typeof(UITypeEditor)))]
-#endif
+        [Editor("KlonsLIB.Design.GenericCollectionEditor, KlonsLIB.Design", "System.Drawing.Design.UITypeEditor, System.Windows.Forms")]
         public MyDataItemList2 Data2 { get; } = new MyDataItemList2();
+
+        [Category("_MyData")]
+        [Editor("KlonsLIB.Design.GenericStringDropDownEditor, KlonsLIB.Design", "System.Drawing.Design.UITypeEditor, System.Windows.Forms")]
+        public string MyStringProp { get; set; }
+
+        [Category("_MyData")]
+        [Editor("KlonsLIB.Design.GenericStringDropDownEditor, KlonsLIB.Design", "System.Drawing.Design.UITypeEditor, System.Windows.Forms")]
+        public string MyStringProp2 { get; set; }
     }
 
     public class MyDataItemList : List<MyDataItem>, IGenericCollectionEditorTarget

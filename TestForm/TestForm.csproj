@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net472;net7.0-windows</TargetFrameworks>
-	  <!-- switching to this would require VS restart
     <TargetFrameworks>net7.0-windows</TargetFrameworks>
+	  <!-- switching to this would require VS restart
+    <TargetFrameworks>net472;net7.0-windows</TargetFrameworks>
 	-->
 	<Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="KlonsLIB.Design.Debug" Version="1.242.71717" />
+    <PackageReference Include="KlonsLIB.Design.Debug" Version="1.243.31331" />
   </ItemGroup>
 
 </Project>
